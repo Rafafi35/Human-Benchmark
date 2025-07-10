@@ -1,15 +1,29 @@
-#button {
-    justify-content: center;
+#content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
     border: solid black;
     border-radius: 10px;
-    height: 300px;
     width: 90%;
-    background-color: orange;
+    margin-bottom: 5px;
 }
 
 .container {
-    text-align: center;
+    width: 90%;
 }
+
+#button {
+    border: solid black;
+    border-radius: 10px;
+    height: 300px;
+    width: 100%;
+    background-color: orange;
+}
+
 
 #display {
     font-size: 5em;
