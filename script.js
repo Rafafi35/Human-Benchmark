@@ -68,8 +68,25 @@ function update(){
 const displayCps = document.getElementById("displayCps")
 let cpsCount = 0
 let cpsUpdate = null
+let firstClick = true
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function cpsClick() {
+    if (firstClick){
+        firstClick = false
+        updateCps()
+    }
     cpsCount += 1
     displayCps.textContent = cpsCount
+
+}
+
+async function updateCps() {
+    await sleep(1000);
+    cpsCount = 0
+    displayCps.textContent = cpsCount
+    updateCps()
 }
