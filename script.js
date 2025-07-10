@@ -66,9 +66,11 @@ function update(){
 //CLICKS PER SECOND TEST
 
 const displayCps = document.getElementById("displayCps")
+const highscoreText = document.getElementById("highscoreText")
 let cpsCount = 0
 let cpsUpdate = null
 let firstClick = true
+let highestClicks = 0
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -81,6 +83,10 @@ function cpsClick() {
     }
     cpsCount += 1
     displayCps.textContent = cpsCount
+    if (cpsCount > highestClicks) {
+        highestClicks = cpsCount
+        highscoreText.textContent = "Your highest CPS is " + cpsCount
+    }
 
 }
 
