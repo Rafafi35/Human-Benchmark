@@ -1,3 +1,7 @@
+body {
+    background-color: #cfcfe8;
+}
+
 #content {
     text-align: center;
     display: flex;
@@ -16,11 +20,36 @@ h2 {
     width: 80%;
 }
 
-button {
+#cpsButton {
     border: solid black;
     border-radius: 10px;
     height: 150px;
     width: 100%;
     background-color: orange;
     font-size: 2.5em;
+}
+
+#reactionButton {
+    border: solid black;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    background-color: orange;
+    font-size: 2.5em;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 150px;
+}
+
+#grid > button {
+    width: 50px;
+    height: 50px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
 }
