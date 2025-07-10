@@ -1,5 +1,7 @@
-const display = document.getElementById("display")
-const button = document.getElementById("button")
+//REACTION TIME TEST
+
+const displayReaction = document.getElementById("displayReaction")
+const button = document.getElementById("reactionButton")
 const avgText = document.getElementById("averageTime")
 let timer = null
 let startTime
@@ -10,7 +12,7 @@ let historyLength = 0
 let historySum = 0
 let averageTime = 0
 
-function handleClick(){
+function reactionClick(){
     if(mode === 1){
         start()
     } else {
@@ -26,19 +28,19 @@ function start(){
         timer = setInterval(update, 1)
         mode = 2
         button.style.backgroundColor = "red"
-        display.textContent = "Wait for Green ..."
+        displayReaction.textContent = "Wait for Green ..."
     }
 }
 
 function stop(){
         clearInterval(timer)
         if (mode === 2) {
-            display.textContent = "You Pressed To early"
+            displayReaction.textContent = "You Pressed To early"
             button.style.backgroundColor = "orange"
         } else if (mode === 3) {
             const currentTime2 = Date.now()
             reactionTime = currentTime2 - startTime
-            display.textContent = reactionTime
+            displayReaction.textContent = reactionTime
 
             historyLength += 1
             historySum += reactionTime
@@ -54,9 +56,20 @@ function update(){
     elapsedTime = currentTime - startTime
 
     if (elapsedTime >= stopAfterTime){
-        display.textContent = "Press!"
+        displayReaction.textContent = "Press!"
         mode = 3
         button.style.backgroundColor = "#0dd10d"
         startTime = Date.now()
     }
+}
+
+//CLICKS PER SECOND TEST
+
+const displayCps = document.getElementById("displayCps")
+let cpsCount = 0
+let cpsUpdate = null
+
+function cpsClick() {
+    cpsCount += 1
+    displayCps.textContent = cpsCount
 }
