@@ -1,5 +1,6 @@
 const display = document.getElementById("display")
 const button = document.getElementById("button")
+const list = document.getElementById("list")
 let timer = null
 let startTime
 let elapsedTime = 0
@@ -30,6 +31,14 @@ function stop(){
         if (mode === 2) {
             display.textContent = "You Pressed To early"
             button.style.backgroundColor = "orange"
+        } else if (mode === 3) {
+            const currentTime2 = Date.now()
+            reactionTime = currentTime2 - startTime
+            display.textContent = reactionTime
+            
+            const li = document.createElement("li");
+            li.textContent = reactionTime
+            list.appendChild(li)
         }
         mode = 1
 }
@@ -40,11 +49,8 @@ function update(){
     display.textContent = elapsedTime
 
     if (elapsedTime >= stopAfterTime){
-        button.style.backgroundColor = "red"
         mode = 3
+        button.style.backgroundColor = "red"
         startTime = Date.now()
-        const currentTime2 = Date.now()
-        reactionTime = currentTime2 - startTime
-        display.textContent = reactionTime
     }
 }
