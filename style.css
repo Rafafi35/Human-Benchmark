@@ -8,23 +8,19 @@
 h2 {
     border: solid black;
     border-radius: 10px;
-    width: 90%;
+    width: 80%;
     margin-bottom: 5px;
 }
 
 .container {
-    width: 90%;
+    width: 80%;
 }
 
-#button {
+button {
     border: solid black;
     border-radius: 10px;
     height: 150px;
     width: 100%;
     background-color: orange;
-}
-
-
-#display {
-    font-size: 5em;
+    font-size: 2.5em;
 }
