@@ -1,6 +1,5 @@
 const display = document.getElementById("display")
 const button = document.getElementById("button")
-const list = document.getElementById("list")
 const avgText = document.getElementById("averageTime")
 let timer = null
 let startTime
@@ -40,10 +39,6 @@ function stop(){
             const currentTime2 = Date.now()
             reactionTime = currentTime2 - startTime
             display.textContent = reactionTime
-
-            const li = document.createElement("li");
-            li.textContent = reactionTime + "ms"
-            list.appendChild(li)
 
             historyLength += 1
             historySum += reactionTime
