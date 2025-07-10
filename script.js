@@ -1,11 +1,15 @@
 const display = document.getElementById("display")
 const button = document.getElementById("button")
 const list = document.getElementById("list")
+const avgText = document.getElementById("averageTime")
 let timer = null
 let startTime
 let elapsedTime = 0
 let stopAfterTime = 3000
 let mode = 1    // 1 = before test, 2 = during Test but Button isn't red yet, 3 = during Test and button is red
+let historyLength = 0
+let historySum = 0
+let averageTime = 0
 
 function handleClick(){
     if(mode === 1){
@@ -38,8 +42,14 @@ function stop(){
             display.textContent = reactionTime
 
             const li = document.createElement("li");
-            li.textContent = reactionTime + " ms"
+            li.textContent = reactionTime + "ms"
             list.appendChild(li)
+
+            historyLength += 1
+            historySum += reactionTime
+            averageTime = Math.round(historySum / historyLength)
+            avgText.textContent = "Your average reaction time is " + averageTime + "ms"
+
         }
         mode = 1
 }
