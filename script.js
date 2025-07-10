@@ -4,10 +4,10 @@ let timer = null
 let startTime
 let elapsedTime = 0
 let stopAfterTime = 3000
-let isRunning = false
+let mode = 1    // 1 = before test, 2 = during Test but Button isn't red yet, 3 = during Test and button is red
 
 function handleClick(){
-    if(!isRunning){
+    if(mode === 1){
         start()
     } else {
         stop()
@@ -16,22 +16,22 @@ function handleClick(){
 
 
 function start(){
-    if(!isRunning){
+    if(mode === 1){
         stopAfterTime = Math.random() * 1500 + 2000
-        console.log
         startTime = Date.now()
         timer = setInterval(update, 1)
-        isRunning = true
+        mode = 2
         button.style.backgroundColor = "green"
     }
 }
 
 function stop(){
-    if(isRunning){
         clearInterval(timer)
-        elapsedTime = Date.now() - startTime
-        isRunning = false
-    }
+        if (mode === 2) {
+            display.textContent = "You Pressed To early"
+            button.style.backgroundColor = "orange"
+        }
+        mode = 1
 }
 
 function update(){
@@ -41,6 +41,7 @@ function update(){
 
     if (elapsedTime >= stopAfterTime){
         button.style.backgroundColor = "red"
+        mode = 3
         startTime = Date.now()
         const currentTime2 = Date.now()
         reactionTime = currentTime2 - startTime
