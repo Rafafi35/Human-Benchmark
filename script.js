@@ -22,7 +22,8 @@ function start(){
         startTime = Date.now()
         timer = setInterval(update, 1)
         mode = 2
-        button.style.backgroundColor = "green"
+        button.style.backgroundColor = "red"
+        display.textContent = "Wait for Green ..."
     }
 }
 
@@ -35,9 +36,9 @@ function stop(){
             const currentTime2 = Date.now()
             reactionTime = currentTime2 - startTime
             display.textContent = reactionTime
-            
+
             const li = document.createElement("li");
-            li.textContent = reactionTime
+            li.textContent = reactionTime + " ms"
             list.appendChild(li)
         }
         mode = 1
@@ -46,11 +47,11 @@ function stop(){
 function update(){
     const currentTime = Date.now()
     elapsedTime = currentTime - startTime
-    display.textContent = elapsedTime
 
     if (elapsedTime >= stopAfterTime){
+        display.textContent = "Press!"
         mode = 3
-        button.style.backgroundColor = "red"
+        button.style.backgroundColor = "#0dd10d"
         startTime = Date.now()
     }
 }

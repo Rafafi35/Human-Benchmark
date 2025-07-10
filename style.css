@@ -1,6 +1,17 @@
 #button {
+    justify-content: center;
     border: solid black;
+    border-radius: 10px;
     height: 300px;
-    width: 600px;
-    background-color: lightblue;
+    width: 90%;
+    background-color: orange;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+#display {
+    font-size: 5em;
 }
