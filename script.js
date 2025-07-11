@@ -96,3 +96,13 @@ async function updateCps() {
     displayCps.textContent = cpsCount
     updateCps()
 }
+
+// Memorize Pattern
+let score = 0
+const grid = document.getElementById("grid")
+
+function startPattern() {
+    let boxIndex = Math.floor(Math.random() * 9 ) + 1
+    let box = grid.querySelector(`:nth-child(${boxIndex})`)
+    box.style.backgroundColor = "red";
+}
