@@ -105,8 +105,6 @@ const grid = document.getElementById("grid")
 
 async function buttonClick(buttonIndex) {
 
-
-
     if (reihenfolge[step] === buttonIndex) {
         console.log("richtig " + reihenfolge[step])
         step++
@@ -133,7 +131,7 @@ async function showPattern() {
     reihenfolge.push(boxIndex)
     for (let i = 0; i < reihenfolge.length; i++) {
         let box = grid.querySelector(`:nth-child(${reihenfolge[i]})`)
-        box.style.backgroundColor = "red"
+        box.style.backgroundColor = "yellow"
         await sleep(600)
         box.style.backgroundColor = ""
         await sleep(300)
