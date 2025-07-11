@@ -103,14 +103,15 @@ let reihenfolge = []
 let step = 0
 const grid = document.getElementById("grid")
 
-function buttonClick(buttonIndex){
+async function buttonClick(buttonIndex){
 
         if (reihenfolge[step] === buttonIndex){
             console.log("richtig " + reihenfolge[step])
             step++
             if (step === reihenfolge.length) {
                 console.log("Reihenfolge geschaft")
-                showPattern()
+                await showPattern()
+                step = 0
 
             }
 
@@ -118,7 +119,6 @@ function buttonClick(buttonIndex){
             console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
             step = 0
             reihenfolge = []
-            showPattern()
         }
     }
 
