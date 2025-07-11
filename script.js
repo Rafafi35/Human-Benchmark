@@ -124,14 +124,16 @@ async function buttonClick(buttonIndex){
 
 async function showPattern() {
 
+    await sleep(600)
+
     let boxIndex = Math.floor(Math.random() * 9 ) + 1
     reihenfolge.push(boxIndex)
     for (let i = 0; i < reihenfolge.length; i++) {
         let box = grid.querySelector(`:nth-child(${reihenfolge[i]})`)
-        box.style.backgroundColor = "red";
-        await sleep(600);
+        box.style.backgroundColor = "red"
+        await sleep(600)
         box.style.backgroundColor = ""
-        await sleep(300);
+        await sleep(300)
     }
 
 }

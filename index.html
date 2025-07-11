@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reaction-Time Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div id="content">
         <h1>Human Benchmark</h1>
 
-        <h2>Reaction-Time Test</h2>
+
         <div class="container">
+            <h2>Reaction-Time Test</h2>
             <button id="reactionButton" onclick="reactionClick()">
                 <div id="displayReaction">
                     Click to Start
@@ -21,8 +24,8 @@
             <p id="averageTime">Here you'll see your average reaction time.</p>
         </div>
 
-        <h2>Clicks Per Second</h2>
         <div class="container">
+            <h2>Clicks Per Second</h2>
             <button id="cpsButton" onclick="cpsClick()">
                 <div id="displayCps">
                     0
@@ -31,26 +34,31 @@
             <p id="highscoreText">Here you'll see your highest CPS</p>
         </div>
 
-        <h2>Memorize Pattern</h2>
-        <div class="wrapper">
-            <div id="grid">
-                <button onClick="buttonClick(1)"></button>
-                <button onClick="buttonClick(2)"></button>
-                <button onClick="buttonClick(3)"></button>
-                <button onClick="buttonClick(4)"></button>
-                <button onClick="buttonClick(5)"></button>
-                <button onClick="buttonClick(6)"></button>
-                <button onClick="buttonClick(7)"></button>
-                <button onClick="buttonClick(8)"></button>
-                <button onClick="buttonClick(9)"></button>
+
+        <div class="container">
+            <h2>Memorize Pattern</h2>
+            <div class="wrapper">
+                <div id="grid">
+                    <button onClick="buttonClick(1)"></button>
+                    <button onClick="buttonClick(2)"></button>
+                    <button onClick="buttonClick(3)"></button>
+                    <button onClick="buttonClick(4)"></button>
+                    <button onClick="buttonClick(5)"></button>
+                    <button onClick="buttonClick(6)"></button>
+                    <button onClick="buttonClick(7)"></button>
+                    <button onClick="buttonClick(8)"></button>
+                    <button onClick="buttonClick(9)"></button>
+                </div>
             </div>
+            <button onclick="showPattern()" id="showPatternButton">Start</button>
         </div>
-        <button onclick="showPattern()">Start</button>
+
     </div>
 
-    
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

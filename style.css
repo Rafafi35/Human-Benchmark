@@ -1,5 +1,5 @@
 body {
-    background-color: #cfcfe8;
+    background-color: #6b5b95
 }
 
 #content {
@@ -9,47 +9,56 @@ body {
     align-items: center;
 }
 
+h1 {
+    margin-bottom: 5%;
+}
+
 h2 {
-    border: solid black;
-    border-radius: 10px;
-    width: 80%;
-    margin-bottom: 5px;
+    
 }
 
 .container {
+    background-color: #feb236;
     width: 80%;
+    height: 500px;
+    border: solid black;
+    border-radius: 15px;
+    margin-bottom: 13%;
 }
 
 #cpsButton {
     border: solid black;
-    border-radius: 10px;
-    height: 150px;
-    width: 100%;
-    background-color: orange;
+    border-radius: 100%;
+    height: 70%;
+    width: 80%;
+    background-color: #ff7b25;
     font-size: 2.5em;
 }
 
 #reactionButton {
     border: solid black;
-    border-radius: 10px;
-    height: 150px;
-    width: 100%;
-    background-color: orange;
+    border-radius: 100%;
+    height: 70%;
+    width: 80%;
+    background-color: #ff7b25;
     font-size: 2.5em;
 }
 
 #grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 150px;
+    width: 30%;
 }
 
 #grid > button {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #ff7b25;
+    border: solid black 3px;
 }
 
 .wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
