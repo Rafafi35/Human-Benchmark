@@ -98,25 +98,40 @@ async function updateCps() {
 }
 
 // Memorize Pattern
-let score = 3
+let score = 0
+let reihenfolge = []
+let step = 0
 const grid = document.getElementById("grid")
 
-async function startPattern() {
+function buttonClick(buttonIndex){
 
-    let reihenfolge = []
-    for (let i = 0; i < score + 1; i++) {
-        let boxIndex = Math.floor(Math.random() * 9 ) + 1
-        reihenfolge.push(boxIndex)
+        if (reihenfolge[step] === buttonIndex){
+            console.log("richtig " + reihenfolge[step])
+            step++
+            if (step === reihenfolge.length) {
+                console.log("Reihenfolge geschaft")
+                showPattern()
+
+            }
+
+        } else {
+            console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
+            step = 0
+            reihenfolge = []
+            showPattern()
+        }
     }
 
+async function showPattern() {
+
+    let boxIndex = Math.floor(Math.random() * 9 ) + 1
+    reihenfolge.push(boxIndex)
     for (let i = 0; i < reihenfolge.length; i++) {
         let box = grid.querySelector(`:nth-child(${reihenfolge[i]})`)
         box.style.backgroundColor = "red";
-        await sleep(1000);
+        await sleep(600);
         box.style.backgroundColor = ""
-        await sleep(1000);
+        await sleep(300);
     }
 
-    
-    
 }
