@@ -98,11 +98,25 @@ async function updateCps() {
 }
 
 // Memorize Pattern
-let score = 0
+let score = 3
 const grid = document.getElementById("grid")
 
-function startPattern() {
-    let boxIndex = Math.floor(Math.random() * 9 ) + 1
-    let box = grid.querySelector(`:nth-child(${boxIndex})`)
-    box.style.backgroundColor = "red";
+async function startPattern() {
+
+    let reihenfolge = []
+    for (let i = 0; i < score + 1; i++) {
+        let boxIndex = Math.floor(Math.random() * 9 ) + 1
+        reihenfolge.push(boxIndex)
+    }
+
+    for (let i = 0; i < reihenfolge.length; i++) {
+        let box = grid.querySelector(`:nth-child(${reihenfolge[i]})`)
+        box.style.backgroundColor = "red";
+        await sleep(1000);
+        box.style.backgroundColor = ""
+        await sleep(1000);
+    }
+
+    
+    
 }
