@@ -102,37 +102,53 @@ let score = 0
 let highscore = 0
 let reihenfolge = []
 let step = 0
+let patternIsShowing = false
+let clickingToStart = true
 const grid = document.getElementById("grid")
 const scoreDisplay = document.getElementById("memorizeScore")
 const highscoreDisplay = document.getElementById("memorizeHighscore")
 
 async function buttonClick(buttonIndex) {
 
-    if (reihenfolge[step] === buttonIndex) {
-        console.log("richtig " + reihenfolge[step])
-        step++
-        if (step === reihenfolge.length) {
-            console.log("Reihenfolge geschaft")
-            step = 0
-            score += 1
-            scoreDisplay.textContent = score
-            if (score > highscore) {
-                highscore = score
-                highscoreDisplay.textContent = highscore
-            }
-            await showPattern()
-        }
-
+    if (clickingToStart) {
+        clickingToStart = false
+        showPattern()
     } else {
-        console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
-        step = 0
-        score = 0
-        scoreDisplay.textContent = score
-        reihenfolge = []
+
+        if (!patternIsShowing) {
+
+            if (reihenfolge[step] === buttonIndex) {
+                console.log("richtig " + reihenfolge[step])
+                step++
+                if (step === reihenfolge.length) {
+                    console.log("Reihenfolge geschaft")
+                    step = 0
+                    score += 1
+                    scoreDisplay.textContent = score
+                    if (score > highscore) {
+                        highscore = score
+                        highscoreDisplay.textContent = highscore
+                    }
+                    await showPattern()
+                }
+
+            } else {
+                console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
+                step = 0
+                score = 0
+                scoreDisplay.textContent = score
+                reihenfolge = []
+                clickingToStart = true
+            }
+        }
     }
+
+
 }
 
 async function showPattern() {
+
+    patternIsShowing = true
 
     await sleep(600)
 
@@ -145,5 +161,7 @@ async function showPattern() {
         box.style.backgroundColor = ""
         await sleep(300)
     }
+
+    patternIsShowing = false
 
 }
