@@ -118,10 +118,8 @@ async function buttonClick(buttonIndex) {
         if (!patternIsShowing) {
 
             if (reihenfolge[step] === buttonIndex) {
-                console.log("richtig " + reihenfolge[step])
                 step++
                 if (step === reihenfolge.length) {
-                    console.log("Reihenfolge geschaft")
                     step = 0
                     score += 1
                     scoreDisplay.textContent = score
@@ -133,7 +131,6 @@ async function buttonClick(buttonIndex) {
                 }
 
             } else {
-                console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
                 step = 0
                 score = 0
                 scoreDisplay.textContent = score
@@ -159,7 +156,7 @@ async function showPattern() {
         box.style.backgroundColor = "yellow"
         await sleep(600)
         box.style.backgroundColor = ""
-        await sleep(300)
+        await sleep(150)
     }
 
     patternIsShowing = false
