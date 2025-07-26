@@ -38,6 +38,12 @@
         <div class="container">
             <h2>Memorize Pattern</h2>
             <div class="wrapper">
+                <div class="scoreDisplay">
+                    <p>SCORE</p>
+                    <p id="memorizeScore">0</p>
+                    <p>SCORE</p>
+                </div>
+                
                 <div id="grid">
                     <button onClick="buttonClick(1)"></button>
                     <button onClick="buttonClick(2)"></button>
@@ -49,6 +55,12 @@
                     <button onClick="buttonClick(8)"></button>
                     <button onClick="buttonClick(9)"></button>
                 </div>
+                <div class="scoreDisplay">
+                    <p>HIGH</p>
+                    <p id="memorizeHighscore">0</p>
+                    <p>SCORE</p>
+                </div>
+                
             </div>
             <button onclick="showPattern()" id="showPatternButton">Start</button>
         </div>

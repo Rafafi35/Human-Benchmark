@@ -97,6 +97,14 @@ h1 {
 
 .wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+}
+
+.scoreDisplay {
+    font-size: 2.5em;
+}
+
+.scoreDisplay > #memorizeScore, #memorizeHighscore {
+    font-size: 1.5em;
 }

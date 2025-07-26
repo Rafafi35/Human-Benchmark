@@ -99,9 +99,12 @@ async function updateCps() {
 
 // Memorize Pattern
 let score = 0
+let highscore = 0
 let reihenfolge = []
 let step = 0
 const grid = document.getElementById("grid")
+const scoreDisplay = document.getElementById("memorizeScore")
+const highscoreDisplay = document.getElementById("memorizeHighscore")
 
 async function buttonClick(buttonIndex) {
 
@@ -110,15 +113,21 @@ async function buttonClick(buttonIndex) {
         step++
         if (step === reihenfolge.length) {
             console.log("Reihenfolge geschaft")
-            await showPattern()
             step = 0
             score += 1
-
+            scoreDisplay.textContent = score
+            if (score > highscore) {
+                highscore = score
+                highscoreDisplay.textContent = highscore
+            }
+            await showPattern()
         }
 
     } else {
         console.log("flasch " + reihenfolge[step] + " = " + buttonIndex)
         step = 0
+        score = 0
+        scoreDisplay.textContent = score
         reihenfolge = []
     }
 }
