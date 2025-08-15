@@ -64,20 +64,20 @@ h1 {
     font-size: 2.5em;
 }
 
-.grid {
+#grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 30%;
 }
 
-.grid > button {
+#grid > button {
     width: 100%;
     aspect-ratio: 1/1;
     background-color: purple;
     border: solid black 3px;
 }
 
-.grid > button:hover {
+#grid > button:hover {
     background-color: rgb(89, 4, 89);
 }
 
@@ -93,6 +93,12 @@ h1 {
 
 .scoreDisplay > #memorizeScore, #memorizeHighscore {
     font-size: 1.5em;
+}
+
+#attentionGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 30%;
 }
 
 .box {

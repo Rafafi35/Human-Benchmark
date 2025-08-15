@@ -162,3 +162,67 @@ async function showPattern() {
     patternIsShowing = false
 
 }
+
+//Attention Test
+
+let attentionTestScore = 0
+
+function startAttentionTest() {
+    const grid = document.getElementById("attentionGrid")
+    let boxX = Math.floor(Math.random() * 3) + 1
+    let boxY = Math.floor(Math.random() * 3) + 1
+    console.log("Next: " + boxX + "" + boxY)
+    let box = ""
+    if (boxX === 1 && boxY === 1) {
+        box = grid.querySelector(`:nth-child(7)`)
+    }
+    else if (boxX === 2 && boxY === 1) {
+        box = grid.querySelector(`:nth-child(8)`)
+    }
+    else if (boxX === 3 && boxY === 1) {
+        box = grid.querySelector(`:nth-child(9)`)
+    }
+    else if (boxX === 3 && boxY === 2) {
+        box = grid.querySelector(`:nth-child(6)`)
+    }
+    else if (boxX === 2 && boxY === 2) {
+        box = grid.querySelector(`:nth-child(5)`)
+    }
+    else if (boxX === 1 && boxY === 2) {
+        box = grid.querySelector(`:nth-child(4)`)
+    }
+    else if (boxX === 3 && boxY === 3) {
+        box = grid.querySelector(`:nth-child(3)`)
+    }
+    else if (boxX === 2 && boxY === 3) {
+        box = grid.querySelector(`:nth-child(2)`)
+    }
+    else if (boxX === 1 && boxY === 3) {
+        box = grid.querySelector(`:nth-child(1)`)
+    }
+    box.style.backgroundColor = "yellow"
+
+    let abzufragendeAchse = "x"
+
+    document.addEventListener("keypress", function handler(event) {
+        if (abzufragendeAchse == "x") {
+            if (event.key == boxX) {
+                console.log("x correct")
+                abzufragendeAchse = "y"
+            } else {
+                box.style.backgroundColor = ""
+                document.removeEventListener("keypress", handler)
+                startAttentionTest()
+            }
+        } else if (abzufragendeAchse == "y") {
+            if (event.key == boxY) {
+                console.log("y correct")
+                attentionTestScore++
+            }
+            box.style.backgroundColor = ""
+            abzufragendeAchse = "x"
+            document.removeEventListener("keypress", handler)
+            startAttentionTest()
+        }
+    })
+}
