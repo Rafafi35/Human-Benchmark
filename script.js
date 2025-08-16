@@ -172,6 +172,7 @@ let box = ""
 let previousBox = 11
 let attentionStartTime
 let attentionTestRunning = false
+const attentionScoreDisplay = document.getElementById("attentionScore") 
 
 function startAttentionTimer() {
     attentionTestRunning = true
@@ -243,6 +244,7 @@ function startAttentionTest() {
                         document.removeEventListener("keypress", handler)
                         document.addEventListener("keypress", function secondKeyAfterX(event) {
                             if (event.key) {
+                                attentionTestScore--
                                 box.style.backgroundColor = ""
                                 document.removeEventListener("keypress", secondKeyAfterX)
                                 startAttentionTest()
@@ -254,6 +256,8 @@ function startAttentionTest() {
                     if (event.key == boxY) {
                         console.log("y correct")
                         attentionTestScore++
+                    } else {
+                        attentionTestScore--
                     }
                     box.style.backgroundColor = ""
                     abzufragendeAchse = "x"
@@ -263,4 +267,7 @@ function startAttentionTest() {
             })
         }
     }
+
+    attentionScoreDisplay.textContent = attentionTestScore
+
 }
