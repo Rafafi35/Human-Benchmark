@@ -170,79 +170,97 @@ let boxX = 1
 let boxY = 1
 let box = ""
 let previousBox = 11
+let attentionStartTime
+let attentionTestRunning = false
+
+function startAttentionTimer() {
+    attentionTestRunning = true
+    timer = setInterval(updateTimer, 1000)
+    attentionStartTime = Date.now()
+    startAttentionTest()
+}
+
+function updateTimer() {
+    const currentTime = Date.now()
+    console.log(currentTime - attentionStartTime)
+    if (currentTime - attentionStartTime > 60000) {
+        attentionTestRunning = false
+        clearInterval(timer)
+    }
+}
 
 function startAttentionTest() {
-    const grid = document.getElementById("attentionGrid")
+    if (attentionTestRunning) {
+        const grid = document.getElementById("attentionGrid")
 
-    boxX = Math.floor(Math.random() * 3) + 1
-    boxY = Math.floor(Math.random() * 3) + 1
+        boxX = Math.floor(Math.random() * 3) + 1
+        boxY = Math.floor(Math.random() * 3) + 1
 
-    if (previousBox == boxX + "" + boxY) {
-        startAttentionTest()
-    } else {
+        if (previousBox == boxX + "" + boxY) {
+            startAttentionTest()
+        } else {
 
-        previousBox = boxX + "" + boxY
+            previousBox = boxX + "" + boxY
 
-        console.log("Next: " + boxX + "" + boxY)
-        if (boxX === 1 && boxY === 1) {
-            box = grid.querySelector(`:nth-child(7)`)
-        }
-        else if (boxX === 2 && boxY === 1) {
-            box = grid.querySelector(`:nth-child(8)`)
-        }
-        else if (boxX === 3 && boxY === 1) {
-            box = grid.querySelector(`:nth-child(9)`)
-        }
-        else if (boxX === 3 && boxY === 2) {
-            box = grid.querySelector(`:nth-child(6)`)
-        }
-        else if (boxX === 2 && boxY === 2) {
-            box = grid.querySelector(`:nth-child(5)`)
-        }
-        else if (boxX === 1 && boxY === 2) {
-            box = grid.querySelector(`:nth-child(4)`)
-        }
-        else if (boxX === 3 && boxY === 3) {
-            box = grid.querySelector(`:nth-child(3)`)
-        }
-        else if (boxX === 2 && boxY === 3) {
-            box = grid.querySelector(`:nth-child(2)`)
-        }
-        else if (boxX === 1 && boxY === 3) {
-            box = grid.querySelector(`:nth-child(1)`)
-        }
-        box.style.backgroundColor = "yellow"
-
-        let abzufragendeAchse = "x"
-
-        document.addEventListener("keypress", function handler(event) {
-            if (abzufragendeAchse == "x") {
-                if (event.key == boxX) {
-                    console.log("x correct")
-                    abzufragendeAchse = "y"
-                } else {
-                    document.removeEventListener("keypress", handler)
-                    document.addEventListener("keypress", function secondKeyAfterX(event) {
-                        if (event.key) {
-                            box.style.backgroundColor = ""
-                            document.removeEventListener("keypress", secondKeyAfterX)
-                            startAttentionTest()
-                        }
-                    })
-                    
-                }
-            } else if (abzufragendeAchse == "y") {
-                if (event.key == boxY) {
-                    console.log("y correct")
-                    attentionTestScore++
-                }
-                box.style.backgroundColor = ""
-                abzufragendeAchse = "x"
-                document.removeEventListener("keypress", handler)
-                startAttentionTest()
+            console.log("Next: " + boxX + "" + boxY)
+            if (boxX === 1 && boxY === 1) {
+                box = grid.querySelector(`:nth-child(7)`)
             }
-        })
+            else if (boxX === 2 && boxY === 1) {
+                box = grid.querySelector(`:nth-child(8)`)
+            }
+            else if (boxX === 3 && boxY === 1) {
+                box = grid.querySelector(`:nth-child(9)`)
+            }
+            else if (boxX === 3 && boxY === 2) {
+                box = grid.querySelector(`:nth-child(6)`)
+            }
+            else if (boxX === 2 && boxY === 2) {
+                box = grid.querySelector(`:nth-child(5)`)
+            }
+            else if (boxX === 1 && boxY === 2) {
+                box = grid.querySelector(`:nth-child(4)`)
+            }
+            else if (boxX === 3 && boxY === 3) {
+                box = grid.querySelector(`:nth-child(3)`)
+            }
+            else if (boxX === 2 && boxY === 3) {
+                box = grid.querySelector(`:nth-child(2)`)
+            }
+            else if (boxX === 1 && boxY === 3) {
+                box = grid.querySelector(`:nth-child(1)`)
+            }
+            box.style.backgroundColor = "yellow"
+
+            let abzufragendeAchse = "x"
+
+            document.addEventListener("keypress", function handler(event) {
+                if (abzufragendeAchse == "x") {
+                    if (event.key == boxX) {
+                        console.log("x correct")
+                        abzufragendeAchse = "y"
+                    } else {
+                        document.removeEventListener("keypress", handler)
+                        document.addEventListener("keypress", function secondKeyAfterX(event) {
+                            if (event.key) {
+                                box.style.backgroundColor = ""
+                                document.removeEventListener("keypress", secondKeyAfterX)
+                                startAttentionTest()
+                            }
+                        })
+
+                    }
+                } else if (abzufragendeAchse == "y") {
+                    if (event.key == boxY) {
+                        console.log("y correct")
+                        attentionTestScore++
+                    }
+                    box.style.backgroundColor = ""
+                    abzufragendeAchse = "x"
+                    document.removeEventListener("keypress", handler)
+                    startAttentionTest()
+                }
+            })
+        }
     }
-
-
 }
