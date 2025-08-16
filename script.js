@@ -221,9 +221,15 @@ function startAttentionTest() {
                     console.log("x correct")
                     abzufragendeAchse = "y"
                 } else {
-                    box.style.backgroundColor = ""
                     document.removeEventListener("keypress", handler)
-                    startAttentionTest()
+                    document.addEventListener("keypress", function secondKeyAfterX(event) {
+                        if (event.key) {
+                            box.style.backgroundColor = ""
+                            document.removeEventListener("keypress", secondKeyAfterX)
+                            startAttentionTest()
+                        }
+                    })
+                    
                 }
             } else if (abzufragendeAchse == "y") {
                 if (event.key == boxY) {
