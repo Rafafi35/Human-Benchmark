@@ -12,9 +12,13 @@ body {
 
 h1 {
     margin-bottom: 5%;
-    font-size: 5em;
+    font-size: clamp(4rem,  10vw, 6rem) ;
 }
 
+h2 {
+    margin-bottom: 5%;
+    font-size: max(calc(3vw + 1rem), 2rem);
+}
 
 .container {
     background-color: #1b1d2c;
@@ -24,6 +28,7 @@ h1 {
     border-radius: 15px;
     margin-bottom: 13%;
     position: relative;
+    padding: 3%;
 }
 
 
@@ -88,10 +93,10 @@ h1 {
 }
 
 .scoreDisplay {
-    font-size: 2.5em;
+    font-size: max(2rem, 3vw);
 }
 
-.scoreDisplay > #memorizeScore, #memorizeHighscore {
+.scoreDisplay > #memorizeScore, #memorizeHighscore, #attentionHighscore, #attentionScore {
     font-size: 1.5em;
 }
 
