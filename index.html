@@ -68,6 +68,13 @@
         <div class="container">
             <h2>Attention Test</h2>
             <div class="wrapper">
+
+                <div class="scoreDisplay">
+                    <p>SCORE</p>
+                    <p id="attentionScore">0</p>
+                    <p>SCORE</p>
+                </div>
+
                 <div id="attentionGrid">
                     <div class="box"></div>
                     <div class="box"></div>
@@ -79,9 +86,19 @@
                     <div class="box"></div>
                     <div class="box"></div>
                 </div>
+
+                <div class="scoreDisplay">
+                    <p>HIGH</p>
+                    <p id="attentionHighscore">0</p>
+                    <p>SCORE</p>
+                </div>
+
             </div>
             <button onClick="startAttentionTimer()">Start</button>
-            <p id="attentionScore">Score</p>
+            <p>Type in the Coordinates of the highlighted box. <br>
+                For Example: Bottom left is 11, bottom right is 31, top middle is 23. <br>
+                You have 60 Seconds
+            </p>
         </div>
 
     </div>

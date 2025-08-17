@@ -166,19 +166,26 @@ async function showPattern() {
 //Attention Test
 
 let attentionTestScore = 0
+let attentionTestHighscore = 0
 let boxX = 1
 let boxY = 1
 let box = ""
 let previousBox = 11
 let attentionStartTime
 let attentionTestRunning = false
-const attentionScoreDisplay = document.getElementById("attentionScore") 
+const attentionScoreDisplay = document.getElementById("attentionScore")
+const attentionHighscoreDisplay = document.getElementById("attentionHighscore")
 
 function startAttentionTimer() {
-    attentionTestRunning = true
-    timer = setInterval(updateTimer, 1000)
-    attentionStartTime = Date.now()
-    startAttentionTest()
+    if (!attentionTestRunning) {
+        attentionTestScore = 0
+        attentionScoreDisplay.textContent = attentionTestScore
+        attentionTestRunning = true
+        timer = setInterval(updateTimer, 1000)
+        attentionStartTime = Date.now()
+        startAttentionTest()
+    }
+
 }
 
 function updateTimer() {
@@ -268,6 +275,10 @@ function startAttentionTest() {
         }
     }
 
+    if (attentionTestHighscore < attentionTestScore) {
+        attentionTestHighscore = attentionTestScore
+        attentionHighscoreDisplay.textContent = attentionTestHighscore
+    }
     attentionScoreDisplay.textContent = attentionTestScore
 
 }
